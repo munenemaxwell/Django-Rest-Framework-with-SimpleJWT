@@ -39,10 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aims',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+
+    'corsheaders.middleware.CorsMiddleware',  #cors middleware
+    'django.middleware.common.CommonMiddleware', #cors middleware
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,7 +55,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
+
+CORS_ORIGIN_WHITELIST = (
+   
+    '127.0.0.1:4200'
+)
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -79,9 +90,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'backend',
+        'NAME': 'backend_django',
         'USER': 'admin',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'burex007',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
